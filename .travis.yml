@@ -14,7 +14,7 @@ before_script:
 script:
 - export REV=dirty-$(git describe --always)
 - chmod +x *.sh
-- "./build.sh"
+- "./build_internal.sh"
 before_deploy:
 - ". ./before_deploy.sh"
 deploy:
