@@ -3,24 +3,16 @@ matrix:
   include:
   - os: linux
     dist: trusty
-    env: TOXENV=WIN
     sudo: false
-  - os: linux
-    dist: trusty
-    sudo: false
-  - os: osx
-    osx_image: xcode8
 addons:
   apt:
     packages:
-    - g++-mingw-w64
+    - clang-3.8
     - cmake3
 before_script:
 - export PATH="$HOME/bin:$PATH"
-- make -f texinfo-travis.mk install_texinfo
 script:
 - export REV=dirty-$(git describe --always)
-- git clone https://github.com/vitasdk/buildscripts.git
 - chmod +x *.sh
 - "./build.sh"
 before_deploy:
@@ -35,7 +27,7 @@ deploy:
   on:
     tags: false
     all_branches: true
-    repo: vitasdk/autobuilds
+    repo: repo/ps4sdk-autobuilds
 branches:
   except:
   - "/^*-v[0-9]/"
