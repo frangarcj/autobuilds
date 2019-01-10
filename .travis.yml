@@ -13,6 +13,7 @@ before_script:
 - export PATH="$HOME/bin:$PATH"
 script:
 - export REV=dirty-$(git describe --always)
+- export MYHOME=$PWD
 - chmod +x *.sh
 - "./build_internal.sh"
 before_deploy:
